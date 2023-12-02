@@ -12,5 +12,6 @@ var (
 func main() {
 	logger = config.GetLogger("main")
 
+	config.ConnectDatabase()
 	router.Initialize()
 }

@@ -9,6 +9,3 @@
 
 #Coverage
 *.out
-
-#DB Folder
-db/

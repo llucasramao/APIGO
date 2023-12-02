@@ -3,12 +3,12 @@ package router
 import "github.com/gin-gonic/gin"
 
 func Initialize() {
-	// Criação da rota via framework Gin
+	// Create router using gin framework
 	router := gin.Default()
 
-	// Inicialização das rotas
+	// Initialize routes
 	InitializeRoutes(router)
 
-	// Execução do servidor HTTP
+	// Run HTTP server
 	router.Run()
 }

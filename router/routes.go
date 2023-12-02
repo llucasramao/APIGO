@@ -9,7 +9,7 @@ func InitializeRoutes(router *gin.Engine) {
 	// Initialize Handlers
 	handlers.InitializeHandlers()
 
-	v1 := router.Group("/api/v1") // Criação de grupos de APIS
+	v1 := router.Group("/api/v1") // Create APIs groups
 	{
 		v1.GET("/opening", handlers.GetOpeningHandler)
 		v1.POST("/opening", handlers.PostOpeningHandler)
@@ -17,7 +17,7 @@ func InitializeRoutes(router *gin.Engine) {
 		v1.DELETE("/opening", handlers.PutOpeningHandler)
 	}
 
-	v2 := router.Group("/api/v2") // Exemplo de teste de utilização de múltiplas versões ou grupos
+	v2 := router.Group("/api/v2") // Test example using multi version or groups
 	{
 		v2.GET("/status", func(ctx *gin.Context) {
 			ctx.JSON(200, gin.H{

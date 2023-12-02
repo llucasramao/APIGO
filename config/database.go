@@ -15,10 +15,10 @@ var (
 
 func ConnectDatabase() {
 	connection := "host=localhost user=root password=root dbname=root port=5432 sslmode=disable TimeZone=America/Sao_Paulo"
-	DB, err := gorm.Open(postgres.Open(connection), &gorm.Config{})
+	DB, err = gorm.Open(postgres.Open(connection))
 	if err != nil {
 		logger.Errf("error to connect to database: %v", err)
 		os.Exit(1)
 	}
-	DB.AutoMigrate(&models.Alunos{}) // Send data structure to database
+	DB.AutoMigrate(&models.Aluno{}) // Send data structure to database
 }

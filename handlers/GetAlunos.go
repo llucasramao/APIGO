@@ -11,6 +11,7 @@ func GetAlunos(ctx *gin.Context) {
 
 	config.DB.Find(&alunos)
 	ctx.JSON(200, gin.H{
-		"Response": alunos,
+		"status":  "geted",
+		"content": alunos,
 	})
 }

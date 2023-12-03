@@ -13,9 +13,11 @@ func InitializeRoutes(router *gin.Engine) {
 	{
 		v1.GET("/alunos", handlers.GetAlunos)
 		v1.GET("/aluno/:id", handlers.GetAlunoID)
+		v1.GET("/aluno/cpf/:cpf", handlers.GetAlunoCpf)
 		// v1.GET("/aluno/nome/:nome", handlers.GetAlunoNome)
-		v1.POST("/aluno", handlers.JwtAuth, handlers.PostDB)
-		v1.PUT("/aluno", handlers.PutDB)
+		v1.POST("/aluno", handlers.JwtAuth, handlers.PostAluno)
+		v1.PUT("/aluno", handlers.PutAluno)
+		v1.PATCH("/aluno/:id", handlers.PatchAluno)
 		v1.DELETE("/aluno/:id", handlers.DeleteAluno)
 		// v1.GET("/:param", handlers.TesteParam)
 	}

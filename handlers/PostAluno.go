@@ -6,7 +6,7 @@ import (
 	"github.com/llucasramao/APIGO/models"
 )
 
-func PostDB(ctx *gin.Context) {
+func PostAluno(ctx *gin.Context) {
 	var aluno models.Aluno
 	if err := ctx.ShouldBindJSON(&aluno); err != nil {
 		logger.Errf("Error ShouldBindJSON struct convert: %v", err)
@@ -18,7 +18,7 @@ func PostDB(ctx *gin.Context) {
 
 	config.DB.Create(&aluno)
 	ctx.JSON(200, gin.H{
-		"Status":     "OK",
-		"dataInsert": aluno,
+		"status":  "created",
+		"sontent": aluno,
 	})
 }

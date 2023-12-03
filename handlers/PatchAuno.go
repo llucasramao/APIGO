@@ -6,10 +6,10 @@ import (
 	"github.com/llucasramao/APIGO/models"
 )
 
-func GetAlunoID(ctx *gin.Context) {
+func PatchAluno(ctx *gin.Context) {
 	var aluno models.Aluno
 	id := ctx.Params.ByName("id")
-	config.DB.First(&aluno, id)
+	config.DB.Find(&aluno, id)
 	if aluno.ID == 0 {
 		ctx.JSON(404, gin.H{
 			"NotFound": "Aluno " + id + " Não encontrado",
@@ -17,8 +17,17 @@ func GetAlunoID(ctx *gin.Context) {
 		return
 	}
 
+	if err := ctx.ShouldBindJSON(&aluno); err != nil {
+		logger.Errf("Error ShouldBindJSON struct convert: %v", err)
+		ctx.JSON(400, gin.H{
+			"Error": err.Error(),
+		})
+		return
+	}
+
+	config.DB.Model(&aluno).UpdateColumns(aluno)
 	ctx.JSON(200, gin.H{
-		"status":  "geted",
+		"status":  "edited",
 		"content": aluno,
 	})
 }

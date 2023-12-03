@@ -9,3 +9,6 @@
 
 #Coverage
 *.out
+
+#DB postgres
+./postgres-data

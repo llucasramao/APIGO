@@ -11,11 +11,13 @@ func InitializeRoutes(router *gin.Engine) {
 
 	v1 := router.Group("/api/v1") // Create APIs groups
 	{
-		v1.GET("/aluno", handlers.GetDB)
-		v1.POST("/aluno", handlers.PostDB)
-		v1.PUT("/aluno", handlers.DeleteDB)
-		v1.DELETE("/aluno", handlers.PutDB)
-		v1.GET("/:param", handlers.TesteParam)
+		v1.GET("/alunos", handlers.GetAlunos)
+		v1.GET("/aluno/:id", handlers.GetAlunoID)
+		// v1.GET("/aluno/nome/:nome", handlers.GetAlunoNome)
+		v1.POST("/aluno", handlers.JwtAuth, handlers.PostDB)
+		v1.PUT("/aluno", handlers.PutDB)
+		v1.DELETE("/aluno/:id", handlers.DeleteAluno)
+		// v1.GET("/:param", handlers.TesteParam)
 	}
 
 	v2 := router.Group("/api/v2") // Test example using multi version or groups
